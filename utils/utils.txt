@@ -1,2 +1,0 @@
-loc - counts the number of lines in a text file
-wc  - counts the number of words in a text file
