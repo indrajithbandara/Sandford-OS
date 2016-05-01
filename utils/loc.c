@@ -11,6 +11,7 @@ int main(int argc, char *argv[]) {
             curr = fgetc(input);
         }
         printf("%d\n", count);
+        fclose(input);
     }
     return 0;
 }
