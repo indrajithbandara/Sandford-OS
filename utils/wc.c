@@ -1,21 +1,21 @@
 #include <stdio.h>
 
 int main(int argc, char *argv[]) {
-    FILE *input = fopen(argv[1], "r");
-    if (input != NULL) {
+    FILE *f = fopen(argv[1], "r");
+    if (f != NULL) {
         int count = 0;
-        char curr = fgetc(input);
+        char curr = fgetc(f);
         while (curr != EOF) {
             if (curr != ' ' && curr != '\t' && curr != '\n')
-                curr = fgetc(input);
+                curr = fgetc(f);
             else {
                 count++;
                 while (curr == ' ' || curr == '\t' || curr == '\n')
-                    curr = fgetc(input);
+                    curr = fgetc(f);
             }
         }
         printf("%d\n", count);
-        fclose(input);
+        fclose(f);
     }
     return 0;
 }
