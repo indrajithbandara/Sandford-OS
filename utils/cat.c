@@ -1,14 +1,14 @@
 #include <stdio.h>
 
 int main(int argc, char *argv[]) {
-    FILE *input;
+    FILE *f;
     int i = 1;
     for (; i < argc; i++) {
         f = fopen(argv[i], "r");
         char curr = fgetc(f);
         while(curr != EOF) {
             putchar(curr);
-            curr = fgetc(input);
+            curr = fgetc(f);
         }
         fclose(f);
     }
