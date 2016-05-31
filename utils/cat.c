@@ -5,7 +5,7 @@ int main(int argc, char *argv[]) {
     int i = 1;
     for (; i < argc; i++) {
         f = fopen(argv[i], "r");
-        char curr = fgetc(f);
+        int curr = fgetc(f);
         while(curr != EOF) {
             putchar(curr);
             curr = fgetc(f);
