@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 int main(int argc, char *argv[]) {
-    if (argv[1] != NULL) {
+    if (argv[1]) {
         int n = atoi(argv[1]), i;
         for (i = 1; i <= n; i++)
             printf("%d\n", i);
