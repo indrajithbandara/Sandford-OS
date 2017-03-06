@@ -4,22 +4,19 @@ echo "Welcome to Sandford OS"
 echo "======================"
 echo
 echo "Cleaning..."
+echo "==========="
 echo
 if [ -d bin ]; then
     rm -rf bin
 fi
-echo
 if [ -d libs ]; then
     rm -rf libs
 fi
-echo
 if [ -d source ]; then
     rm -rf source
 fi
-echo
 echo "Creating Directories..."
-echo
-echo
+echo "======================="
 mkdir libs
 mkdir bin
 mkdir bin/sys
@@ -29,19 +26,18 @@ mkdir source
 mkdir source/userland
 echo
 cd source/
-echo
-echo
 echo "Downloading Kernel..."
+echo "====================="
 git clone https://github.com/brianmillar/sfdkernel.git
 mv sfdkernel kernel
 echo
-echo
 echo "Downloading Drivers..."
+echo "======================"
 git clone https://github.com/brianmillar/sfddrvs.git
 mv sfddrvs drivers
 echo
-echo
 echo "Downloading Userland Components..."
+echo "=================================="
 cd userland
 git clone https://github.com/brianmillar/arigen.git
 echo
@@ -69,141 +65,55 @@ git clone https://github.com/brianmillar/sfdsh.git
 echo
 git clone https://github.com/brianmillar/sfdutils.git
 echo
+echo "=========================="
+echo "***ALL FILES DOWNLOADED***"
 echo
-echo "Cleaning Unneeded Git Files..."
+echo -n "Cleaning Unneeded Git Files... "
+
+function git_cleanup {
+    if [ -d .git ]; then
+        rm -rf .git
+    fi
+    if [ -e .gitignore ]; then
+        rm .gitignore
+    fi
+}
 
 cd ../kernel
-if [ -d .git ]; then
-    rm -rf .git
-fi
-if [ -e .gitignore ]; then
-    rm .gitignore
-fi
-
+git_cleanup
 cd ../drivers
-if [ -d .git ]; then
-    rm -rf .git
-fi
-if [ -e .gitignore ]; then
-    rm .gitignore
-fi
-
+git_cleanup
 cd ../userland
-
 cd arigen
-
-if [ -d .git ]; then
-    rm -rf .git
-fi
-if [ -e .gitignore ]; then
-    rm .gitignore
-fi
-
+git_cleanup
 cd ../sfdassm
-
-if [ -d .git ]; then
-    rm -rf .git
-fi
-if [ -e .gitignore ]; then
-    rm .gitignore
-fi
-
+git_cleanup
 cd ../sfdav
-
-if [ -d .git ]; then
-    rm -rf .git
-fi
-if [ -e .gitignore ]; then
-    rm .gitignore
-fi
-
+git_cleanup
 cd ../sfdbtl
-
-if [ -d .git ]; then
-    rm -rf .git
-fi
-if [ -e .gitignore ]; then
-    rm .gitignore
-fi
-
+git_cleanup
 cd ../sfdcc
-
-if [ -d .git ]; then
-    rm -rf .git
-fi
-if [ -e .gitignore ]; then
-    rm .gitignore
-fi
-
+git_cleanup
 cd ../sfdfs
-
-if [ -d .git ]; then
-    rm -rf .git
-fi
-if [ -e .gitignore ]; then
-    rm .gitignore
-fi
-
+git_cleanup
 cd ../sfdgames
-
-if [ -d .git ]; then
-    rm -rf .git
-fi
-if [ -e .gitignore ]; then
-    rm .gitignore
-fi
-
+git_cleanup
 cd ../sfdgfx
-
-if [ -d .git ]; then
-    rm -rf .git
-fi
-if [ -e .gitignore ]; then
-    rm .gitignore
-fi
-
+git_cleanup
 cd ../sfdinit
-
-if [ -d .git ]; then
-    rm -rf .git
-fi
-if [ -e .gitignore ]; then
-    rm .gitignore
-fi
-
+git_cleanup
 cd ../sfdlibs
-
-if [ -d .git ]; then
-    rm -rf .git
-fi
-if [ -e .gitignore ]; then
-    rm .gitignore
-fi
-
+git_cleanup
 cd ../sfdpack
-
-if [ -d .git ]; then
-    rm -rf .git
-fi
-if [ -e .gitignore ]; then
-    rm .gitignore
-fi
-
+git_cleanup
 cd ../sfdsh
-
-if [ -d .git ]; then
-    rm -rf .git
-fi
-if [ -e .gitignore ]; then
-    rm .gitignore
-fi
-
+git_cleanup
 cd ../sfdutils
+git_cleanup
 
-if [ -d .git ]; then
-    rm -rf .git
-fi
-if [ -e .gitignore ]; then
-    rm .gitignore
-fi
-
+echo "Done."
+echo
+echo
+echo "BEGINNING COMPILATION PHASE"
+echo "==========================="
+echo
