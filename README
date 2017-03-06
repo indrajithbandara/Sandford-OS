@@ -2,4 +2,4 @@ SANDFORD OPERATING SYSTEM
 =========================
 
 Welcome to the primary repo for the Sandford Operating System project.
-This repo may appear empty but it actually includes everything needed to build the operating system. The build.sh script file will automatically clone all the components of the OS from their individual seperate repos and build them. When you clone this repo and enter this directory you can run build.sh and this directory will then contain the full OS installation.
+This repo may appear empty but it actually includes everything needed to build the operating system. The build.sh script file will automatically clone all the components of the OS from their individual repos and build them. When you clone this repo and enter this directory you can run build.sh and this directory will then contain the full OS installation.
