@@ -12,6 +12,5 @@ bnf.close();
 print("Building Release " + version + " (Build " + str(build) + ")");
 print("Compiling Userland...");
 call(["./SCRIPTS/BLDUTLS.SH"]);
-#call(["./build_games.sh"]);
 print("Creating Disk Image...");
 call(["mkisofs", "-o", "SANDFORD-RELEASE-" + version + "-BUILD-" + str(build) + ".ISO", "./"]);
