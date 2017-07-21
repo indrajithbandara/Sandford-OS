@@ -31,7 +31,7 @@ typedef struct {
     FACE *faces;
 } OBJ;
 
-OBJ *sfd_obj_load(char *name) {
+OBJ *sfd_files_obj_load(char *name) {
     OBJ *obj = malloc(sizeof(OBJ));
     obj->name = "";
     obj->verts = obj->norms = obj->texs = NULL;
@@ -52,8 +52,7 @@ OBJ *sfd_obj_load(char *name) {
                         strtok(buffer, " ");
                         name = strtok(NULL, "\0");
                         obj.name = strdup(name);
-                    }
-                    else if (buffer[0] == 'v' && buffer[1] == ' ') {
+                    } else if (buffer[0] == 'v' && buffer[1] == ' ') {
                         VEC4 vert;
                         strtok(buffer, " ");
                         vert.x = (float)atof(strtok(NULL, " "));
@@ -61,8 +60,7 @@ OBJ *sfd_obj_load(char *name) {
                         vert.z = (float)atof(strtok(NULL, " "));
                         obj.verts = realloc(obj.verts, ++obj.vertc * sizeof(vec4));
                         obj.verts[obj.vertc - 1] = vert;
-                    }
-                    else if (buffer[0] == 'v' && buffer[1] == 'n' && buffer[2] == ' ') {
+                    } else if (buffer[0] == 'v' && buffer[1] == 'n' && buffer[2] == ' ') {
                         VEC4 norm;
                         strtok(buffer, " ");
                         norm.x = (float)atof(strtok(NULL, " "));
@@ -99,23 +97,19 @@ OBJ *sfd_obj_load(char *name) {
                         }
                         obj.faces = realloc(model.faces, ++model.facec * sizeof(FACE));
                         obj.faces[obj.facec - 1] = f;
-                    }
-                    else
+                    } else
                         puts(buffer);
-                }
-                i = 0;
+                } i = 0;
             } else {
                 fclose(file);
                 break;
             }
-        }
-        fclose(file);
-    }
-    free(buffer);
+        } fclose(file);
+    } free(buffer);
     return obj;
 }
 
-void sfd_free_obj(OBJ *obj) {
+void sfd_files_obj_free(OBJ *obj) {
     free(obj->name);
     free(obj->texs);
     free(obj->faces);
