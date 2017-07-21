@@ -25,7 +25,7 @@ WAV *sfd_files_wav_load(char*);
 
 WAV *sfd_files_wav_load(char *fname) {
     FILE *file = fopen(fname, "rb");
-    if (f) {
+    if (file) {
         char *s1 = malloc(5);
         char *s2 = malloc(8);
         int fsize;
@@ -38,21 +38,21 @@ WAV *sfd_files_wav_load(char *fname) {
             free(s2);
             wav = malloc(sizeof(WAV));
             wav->fsize = fsize;
-            fseek(f, 7, SEEK_CUR);
+            fseek(file, 7, SEEK_CUR);
             fread(&(wav->channels), 1, 2, file);
             fread(&(wav->freq), 1, 4, file);
-            fseek(f, 6, SEEK_CUR);
+            fseek(file, 6, SEEK_CUR);
             fread(&(wav->bits), 1, 2, file);
-            fseek(f, 4, SEEK_CUR);
+            fseek(file, 4, SEEK_CUR);
             fread(&(wav->size), 1, 4, file);
             wav->data = malloc((unsigned long)wav->size - 44);
-            fread(wav->data, 1, (size_t)wav->size - 44, f);
+            fread(wav->data, 1, (size_t)wav->size - 44, file);
             fclose(file);
             return wav;
         } else {
             free(s1);
             free(s2);
-            fclose(f);
+            fclose(file);
             puts("sfdlib_wav: Invalid WAV Header");
         }
     }
