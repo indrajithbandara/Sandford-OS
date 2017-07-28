@@ -15,14 +15,14 @@
  * along with Project Sandford.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-WAV *sfd_files_wav_load(char*);
-WAV *sfd_files_wav_free(char*);
-
 typedef struct {
     int fsize, size, freq;
     short channels, bits;
     void *data;
 } WAV;
+
+WAV *sfd_files_wav_load(char*);
+void sfd_files_wav_free(WAV*);
 
 WAV *sfd_files_wav_load(char *fname) {
     FILE *file = fopen(fname, "rb");

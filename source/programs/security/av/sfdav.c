@@ -20,28 +20,28 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "sfdlibs/sfdlib_file.c"
-#include "modules/JPEG.c"
+#include "../../../libraries/files/sfd_libfile.c"
+#include "modules/filetypes/jpeg.c"
 #include "modules/threats.c"
 
-#define VERSION  "0.0.7"
+#define VERSION  "0.0.8"
 
 static int found = 0, empty = 0;
 
 int scan(char *name) {
-    FILE *f = fopen(name, "r+b");
-    if (f != NULL) {
-        char *type   = sfd_filetype(f),
-             *fsize  = sfd_filesize_formatted(f),
+    FILE *file = fopen(name, "r+b");
+    if (file) {
+        char *type   = sfd_files_filetype(file),
+             *fsize  = sfd_files_ffilesize(file),
              *threat = NULL;
-        if (strcmp(type, "Empty File              ") != 0)
-            threat = detect_threat(f, type);
+        if (strcmp(type, "Empty File              "))
+            threat = detect_threat(file, type);
         else
             empty++;
-        fclose(f);
-        printf(" %s | %s | %s | %s \n", (threat == NULL) ? "    [OKAY]" : "[DETECTED]", type, fsize, name);
+        fclose(file);
+        printf(" %s | %s | %s | %s \n", (!threat) ? "    [OKAY]" : "[DETECTED]", type, fsize, name);
         free(fsize);
-        if (threat != NULL) {
+        if (threat) {
             found++;
             printf(" |----> Details of Detected Threat: %s\n\n", threat);
         }

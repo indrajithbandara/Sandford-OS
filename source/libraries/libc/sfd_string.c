@@ -84,7 +84,7 @@ char *sfd_strlow(const char *s) {
     int i, l = sfd_strlen(s);
     char *s1 = malloc(l + 1);
     for (i = 0; i < l; i++)
-        s1[i] = tolower(s[i]);
+        s1[i] = sfd_tolower(s[i]);
     s1[i + 1] = '\0';
     return s1;
 }
@@ -100,7 +100,7 @@ char *sfd_strupp(const char *s) {
     int i, l = sfd_strlen(s);
     char *s1 = malloc(l + 1);
     for (i = 0; i < l; i++)
-        s1[i] = toupper(s[i]);
+        s1[i] = sfd_toupper(s[i]);
     s1[i + 1] = '\0';
     return s1;
 }

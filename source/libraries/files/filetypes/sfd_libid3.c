@@ -26,16 +26,16 @@ ID3V1 *extract_id3v1(char *fname) {
     FILE *file = fopen(fname, "rb");
     if (file) {
         char *s = malloc(4);
-        fseek(f, -128, SEEK_END);
-        fgets(s, 4, f);
+        fseek(file, -128, SEEK_END);
+        fgets(s, 4, file);
         if (strcmp("TAG", s) == 0) {
             free(s);
             ID3V1 *id3v1 = malloc(sizeof(ID3V1));
-            fclose(f);
+            fclose(file);
             return id3v1;
         } else {
             free(s);
-            fclose(f);
+            fclose(file);
         }
     }
     return NULL;

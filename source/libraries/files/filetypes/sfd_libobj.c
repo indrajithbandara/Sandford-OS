@@ -25,7 +25,7 @@ typedef struct {
 } FACE;
 
 typedef struct {
-    int vertc, facec, texc = 0;
+    int vertc, facec, texc;
     char *name;
     VEC4 *texs;
     FACE *faces;
@@ -36,7 +36,7 @@ OBJ *sfd_files_obj_load(char *name) {
     obj->name = "";
     obj->verts = obj->norms = obj->texs = NULL;
     obj->faces = NULL;
-    char *buffer = malloc(SFD_MAX_LINE_LEN + 1);
+    char *buffer = malloc(SFD_SYS_CONFIG->max_line_len + 1);
     FILE *file = fopen(name, "r");
     int i, c;
     i = c = 0;
@@ -44,7 +44,7 @@ OBJ *sfd_files_obj_load(char *name) {
         while (c != EOF) {
             while ((c = fgetc(file)) != '\n' && c != EOF)
                 buffer[i++] = c;
-            if (i < SFD_MAX_LINE_LEN) {
+            if (i < SFD_SYS_CONFIG->max_line_len) {
                 buffer[i] = '\0';
                 if (buffer && buffer[0] != '#' && buffer[0] != '\n' && strlen(buffer) != 0) {
                     if (buffer[0] == 'o' && buffer[1] == ' ') {

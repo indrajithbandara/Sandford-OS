@@ -26,7 +26,7 @@ BMP *sfd_import_bmp(char *fname) {
     if (file) {
         BMP *bmp = malloc(sizeof(BMP));
         char *s = malloc(3);
-        fgets(s, 3, f);
+        fgets(s, 3, file);
         if (strcmp("BM", s) == 0) {
             int offset, i;
             free(s);

@@ -29,11 +29,11 @@ char sfd_toupper(const char);
 
 
 int sfd_isalnum(const char c) {
-    return (isalpha(c) || isdigit(c));
+    return (sfd_isalpha(c) || sfd_isdigit(c));
 }
 
 int sfd_isalpha(const char c) {
-    return (islower(c) || isupper(c));
+    return (sfd_islower(c) || sfd_isupper(c));
 }
 
 int sfd_isdigit(const char c) {
@@ -64,9 +64,9 @@ int sfd_isupper(const char c) {
 }
 
 char sfd_tolower(const char c) {
-    return (isupper(c)) ? (c + 32) : c;
+    return (sfd_isupper(c)) ? (c + 32) : c;
 }
 
 char sfd_toupper(const char c) {
-    return (islower(c)) ? (c - 32) : c;
+    return (sfd_islower(c)) ? (c - 32) : c;
 }
