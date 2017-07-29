@@ -1,4 +1,4 @@
-/* yes.c - This file is part of Project Sandford, a New Operating System.
+/* sfd_id3view.c - This file is part of Project Sandford, a New Operating System.
  * Copyright 2016, 2017 Brian Millar <brianmillar@protonmail.ch>
  *
  * Project Sandford is free software: you can redistribute it and/or modify
@@ -16,15 +16,12 @@
  */
 
 #include <stdio.h>
+#include "../../libraries/files/filetypes/sfd_libid3.c"
 
 int main(int argc, char *argv[]) {
     if (argc > 1) {
-        int i;
-        while (1)
-            for (i = 1; i < argc; i++)
-                printf("%s%s", argv[i], (i == argc - 1) ? "\n" : " ");
+        ;
     } else
-        while (1)
-            puts("y");
+        puts("No Input File Provided");
     return 0;
 }

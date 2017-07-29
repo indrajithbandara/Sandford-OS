@@ -1,4 +1,4 @@
-/* true.c - This file is part of Project Sandford, a New Operating System.
+/* sfd_cat.c - This file is part of Project Sandford, a New Operating System.
  * Copyright 2016, 2017 Brian Millar <brianmillar@protonmail.ch>
  *
  * Project Sandford is free software: you can redistribute it and/or modify
@@ -15,6 +15,17 @@
  * along with Project Sandford.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-int main() {
+#include <stdio.h>
+
+int main(int argc, char *argv[]) {
+    int i, c;
+    for (i = 1; i < argc; i++) {
+        FILE *file = fopen(argv[i], "r");
+        if (file) {
+            while((c = fgetc(file)) != EOF)
+                putchar(c);
+            fclose(file);
+        }
+    }
     return 0;
 }

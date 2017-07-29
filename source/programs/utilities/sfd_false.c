@@ -1,4 +1,4 @@
-/* echo.c - This file is part of Project Sandford, a New Operating System.
+/* sfd_false.c - This file is part of Project Sandford, a New Operating System.
  * Copyright 2016, 2017 Brian Millar <brianmillar@protonmail.ch>
  *
  * Project Sandford is free software: you can redistribute it and/or modify
@@ -15,11 +15,6 @@
  * along with Project Sandford.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <stdio.h>
-
-int main(int argc, char *argv[]) {
-    int i;
-    for (i = 1; i < argc; i++)
-        printf("%s%s", argv[i], (i == (argc - 1)) ? "\n" : " ");
-    return 0;
+int main() {
+    return 1;
 }
