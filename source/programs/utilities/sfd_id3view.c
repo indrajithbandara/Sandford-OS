@@ -16,6 +16,8 @@
  */
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "../../libraries/files/filetypes/sfd_libid3.c"
 
 int main(int argc, char *argv[]) {
